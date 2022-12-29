@@ -1,0 +1,11 @@
+html 
+    head
+        title Productos en Pug
+    body
+        h1 Vista de productos
+        
+- for (var x = 0; x < suggestedProds.length; x++)
+    each item in suggestedProds[x]
+        li= item
+
+a(class="button" href="//localhost:8080/prodUp")="Cargar Productos"

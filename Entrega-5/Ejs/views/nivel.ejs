@@ -1,0 +1,26 @@
+<html>
+    <body>
+        
+        <h1> Vista de productos</h1>
+
+        <% if(suggestedProds.length > 0){ %>
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    
+                    <% for (const persona of suggestedProds) {%>
+                    <ul>
+                        <li><%=persona.title%></li>
+                        <li><%=persona.price%></li>
+                        <li><%=persona.thumbnail%></li>
+                    </ul>
+                    <%};%>
+                </table>
+            </div>
+        <% } else{ %>
+            <h3 class="alert alert-danger">No hay Productos</h3>
+        <% } %>
+        
+        <button onclick="location.assign('/prodUp')">Ver Productos</button>
+        
+    </body>
+</html>

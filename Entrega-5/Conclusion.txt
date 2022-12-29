@@ -1,0 +1,10 @@
+Luego de haber probado los 3 motores de plantillas, puedo decir que preferiria usar handlebars o ejs.
+
+Handlebars me parece mucho mas sencillo de comprender y me resulta muy comodo a la hora de armar el HTML.
+Por otro lado ejs tambien es sencillo aunque los tags que utilizan me resultan incomodos, aun asi es mas completo asi que
+creo que esta dificil elegir. Eligiria ejs por lo completo que es, si bien no me gusto tanto como handlebars en lo simple y estetico
+ejs me puede resultar mucho mas util para otras muchas cosas.
+
+Pug no me gusto para nada directamente, no me gusta su sintaxis y me parece molesto la forma de trabajarlo.
+
+Esta es mi conclusion.

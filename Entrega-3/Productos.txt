@@ -1,0 +1,32 @@
+[
+  {
+    "nombre": "PC",
+    "precio": 500,
+    "thumbnail": "aaa",
+    "id": 1
+  },
+  {
+    "nombre": "PC",
+    "precio": 500,
+    "thumbnail": "aaa",
+    "id": 2
+  },
+  {
+    "nombre": "PC",
+    "precio": 500,
+    "thumbnail": "aaa",
+    "id": 3
+  },
+  {
+    "nombre": "PC",
+    "precio": 500,
+    "thumbnail": "aaa",
+    "id": 4
+  },
+  {
+    "nombre": "PC",
+    "precio": 500,
+    "thumbnail": "aaa",
+    "id": 5
+  }
+]

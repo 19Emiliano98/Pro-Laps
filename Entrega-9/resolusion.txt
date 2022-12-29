@@ -1,0 +1,100 @@
+1-  use ecommerce
+
+2- db.createCollection('mensajes') y db.createCollection('productos')
+
+3-  
+
+db.productos.insertMany(
+    [
+        {title: "Regla", price:250, thumbnail:"img1"},
+        {title: "Goma de borrar", price:100, thumbnail:"img2"},
+        {title: "Escuadra", price:400, thumbnail:"img3"},
+        {title: "Cuaderno", price:600, thumbnail:"img4"},
+        {title: "Mochila", price:2000, thumbnail:"img5"},
+        {title: "Tablero", price:1500, thumbnail:"img6"},
+        {title: "Impresora", price:3500, thumbnail:"img7"},
+        {title: "Notebook", price:4200, thumbnail:"img8"},
+        {title: "Tablet", price:2800, thumbnail:"img9"},
+        {title: "Iphone", price:5000, thumbnail:"img10"}
+    ]
+)
+
+db.mensajes.insertMany(
+    [
+        {author: "Tato@gmail.com", date:"20/12/22 20:30", text:"Lorem ipsum dolor sit amet."},
+        {author: "Emiliano@gmail.com", date:"20/12/22 20:31", text:"Quisque sed metus convallis, bibendum."},
+        {author: "Alan@gmail.com", date:"20/12/22 20:31", text:"Suspendisse commodo nibh orci, rhoncus."},
+        {author: "Dario@gmail.com", date:"20/12/22 20:32", text:"Vestibulum ante ipsum primis in."},
+        {author: "Kaku@gmail.com", date:"20/12/22 20:33", text:"Donec scelerisque vulputate posuere. Maecenas dolor nisi, vehicula eget augue quis, bibendum eleifend lorem. Fusce."},
+        {author: "Tomas@gmail.com", date:"20/12/22 20:34", text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit."},
+        {author: "Leo@gmail.com", date:"20/12/22 20:35", text:"Nam gravida justo semper lectus accumsan rhoncus."},
+        {author: "Matias@gmail.com", date:"20/12/22 20:35", text:"Vivamus lacinia faucibus ligula, eu malesuada felis lobortis ut."},
+        {author: "Facundo@gmail.com", date:"20/12/22 20:36", text:"Aenean mollis, nulla a imperdiet varius, justo elit cursus justo, sed hendrerit orci elit at risus."},
+        {author: "Luciana@gmail.com", date:"20/12/22 20:36", text:"Donec in metus eget turpis posuere laoreet vel vel lacus."}
+    ]
+)
+
+4-  Listo los documentos de ambas collections
+
+db.mensajes.find() y db.productos.find() 
+
+5-  
+
+db.mensajes.estimatedDocumentCount() y db.productos.estimatedDocumentCount()
+
+6-  Agrego un producto
+
+db.productos.insertOne({title:"Xiaomi redmi note 10", price: 4600, thumbnail:"img11"})
+
+7-  Lista de productos con menos de $1000
+
+db.productos.find({price:{$lt: 1000}})
+
+8-  Lista de productos con entre $1000 y $3000
+
+db.productos.find({$and: [{price:{$gt: 1000}}, {price:{$lt: 3000}}]})
+
+9-  Lista de productos mayores que $3000
+
+db.productos.find({price:{$gt: 3000}})
+
+10- Devuelve el 3er producto mas barato
+
+db.productos.find({}, {"title":1}).skip(2).limit(1).sort( { "price": 1, "_id": 1 } )
+
+11- Le agregue stock a los productos
+
+db.productos.update({}, {$set:{"stock": 100}}, {"multi": true})
+
+12- Stock en 0 a mayores de $4000
+
+db.productos.update({price:{$gt: 4000}}, {$set:{"stock": 0}}, {"multi": true})
+
+13- Borra los productos menores de $1000
+
+db.productos.deleteMany({price:{$lt: 1000}})
+
+14- Creo el usuario lector
+
+use admin
+
+db.createUser(
+    {
+        user: "pepe",
+        pwd: "asd456",
+        roles:[
+            {role: "read", db: "ecommerce"}
+        ]
+    }
+)
+
+15- Intento leer y escribir luego
+
+use ecommerce
+
+db.productos.find();
+
+db.productos.insertOne({title: "probando"})
+
+** Aqui deberia tirar error por intentar modificar algo de la DB **
+
