@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker'
 faker.locale = 'es'
 
-function generarUsuario() {
+function generarProducto() {
     return {
-        nombre: faker.ecommerce.product(),
-        precio: faker.ecommerce.price(),
+        nombre: faker.commerce.productName(),
+        precio: faker.commerce.price(),
         img: faker.internet.url()
     }
 }
 
-export { generarUsuario }
+export { generarProducto }

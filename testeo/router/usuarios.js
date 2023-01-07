@@ -1,16 +1,16 @@
 import express from 'express'
-import ApiUsuariosMock from '../api/usuarios.js'
+import ApiProductosMock from '../api/usuarios.js'
 
-class UsuariosRouter extends express.Router {
+class ProductosRouter extends express.Router {
     constructor() {
         super()
 
-        const apiUsuarios = new ApiUsuariosMock()
+        const apiProductos = new ApiProductosMock()
 
         this.post('/popular', async (req, res, next) => {
             try {
                 const cant = Number(req.query.cant) || 50
-                res.json(await apiUsuarios.popular(cant))
+                res.json(await apiProductos.popular(cant))
             } catch (error) {
                 next(error)
             }
@@ -18,7 +18,7 @@ class UsuariosRouter extends express.Router {
 
         this.get('/', async (req, res, next) => {
             try {
-                res.json(await apiUsuarios.listarTodos())
+                res.json(await apiProductos.listarTodos())
             } catch (error) {
                 next(error)
             }
@@ -26,7 +26,7 @@ class UsuariosRouter extends express.Router {
 
         this.get('/:id', async (req, res, next) => {
             try {
-                res.json(await apiUsuarios.listar(req.params.id))
+                res.json(await apiProductos.listar(req.params.id))
             } catch (error) {
                 next(error)
             }
@@ -34,7 +34,7 @@ class UsuariosRouter extends express.Router {
 
         this.post('/', async (req, res, next) => {
             try {
-                res.json(await apiUsuarios.guardar(req.body))
+                res.json(await apiProductos.guardar(req.body))
             } catch (error) {
                 next(error)
             }
@@ -42,7 +42,7 @@ class UsuariosRouter extends express.Router {
 
         this.put('/:id', async (req, res, next) => {
             try {
-                res.json(await apiUsuarios.actualizar({...req.body, id: req.params.id}))
+                res.json(await apiProductos.actualizar({...req.body, id: req.params.id}))
             } catch (error) {
                 next(error)
             }
@@ -50,7 +50,7 @@ class UsuariosRouter extends express.Router {
 
         this.delete('/:id', async (req, res, next) => {
             try {
-                res.json(await apiUsuarios.borrar(req.params.id))
+                res.json(await apiProductos.borrar(req.params.id))
             } catch (error) {
                 next(error)
             }
@@ -58,4 +58,4 @@ class UsuariosRouter extends express.Router {
     }
 }
 
-export default UsuariosRouter
+export default ProductosRouter

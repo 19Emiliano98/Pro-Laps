@@ -1,7 +1,7 @@
 import ContenedorMemoria from "../contenedores/ContenedorMemoria.js"
-import { generarUsuario } from '../utils/utils.js'
+import { generarProducto } from '../utils/utils.js'
 
-class ApiUsuariosMock extends ContenedorMemoria {
+class ApiProductosMock extends ContenedorMemoria {
     constructor() {
         super()
     }
@@ -9,7 +9,7 @@ class ApiUsuariosMock extends ContenedorMemoria {
     popular(cant) {
         const nuevos = []
         for (let i = 0; i < cant; i++) {
-            const usuarioNuevo = generarUsuario()
+            const usuarioNuevo = generarProducto()
             const guardado = this.guardar(usuarioNuevo)
             nuevos.push(guardado)
         }
@@ -17,4 +17,4 @@ class ApiUsuariosMock extends ContenedorMemoria {
     }
 }
 
-export default ApiUsuariosMock
+export default ApiProductosMock
