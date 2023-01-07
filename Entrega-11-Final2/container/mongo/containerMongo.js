@@ -14,7 +14,7 @@ mongoose.connect("mongodb+srv://19Emiliano98:Siambreta123!@cluster01atlas.5ftbdh
 });
 
 
-class MongoContainer {
+class containerMongo {
 
     async addProducts(data){
         const dataAdd = new modelsProducts(data)
@@ -22,7 +22,7 @@ class MongoContainer {
         return productoAdd
     }
 
-    async addCarrito(data){
+    async addCart(data){
         const dataAdd = new cartModels(data)
         const carritoadd = await dataAdd.save()
         return carritoadd
@@ -73,4 +73,4 @@ class MongoContainer {
     }
 }
 
-module.exports = MongoContainer;
+module.exports = containerMongo;

@@ -1,11 +1,11 @@
-const MongoContainer = require('../../container/mongo/containerMongo');
+const containerMongo = require('../../container/mongo/containerMongo');
 
-const Carrito = new MongoContainer();
-const Producto = new MongoContainer();
+const Carrito = new containerMongo();
+const Producto = new containerMongo();
 
 const postCarrito = (req, res) => {
 
-    Carrito.addCarrito({
+    Carrito.addCart({
         timestamp: Date.now(),
         productos: []
     })

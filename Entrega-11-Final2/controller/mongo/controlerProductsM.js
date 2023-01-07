@@ -1,6 +1,6 @@
-const MongoContainer = require('../../container/mongo/containerMongo');
+const containerMongo = require('../../container/mongo/containerMongo');
 
-const Producto = new MongoContainer();
+const Producto = new containerMongo();
 
 
 const getProducto = (req, res) => {
@@ -50,13 +50,13 @@ const postProducto = (req, res) => {
 const updateProducto = (req, res) => {
 
     const producto = {
-        timestamp: Date.now(),
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         codigo: req.body.codigo,
         precio: req.body.precio,
         foto: req.body.foto,
         stock: req.body.stock,
+        timestamp: Date.now(),
     }
 
     Producto.updateProduct(req.params.id, producto)

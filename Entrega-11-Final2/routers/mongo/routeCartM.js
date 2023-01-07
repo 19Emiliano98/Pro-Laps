@@ -1,7 +1,5 @@
 const { postCarrito, getCarrito, postProductoCarrito, deleteProductoCarrito, deleteCarrito } = require('../../controller/mongo/controlerCartM');
 
-
-
 const { Router } = require('express');
 const logRequestInfo = require('../../middlewares/logRequestInfo');
 
