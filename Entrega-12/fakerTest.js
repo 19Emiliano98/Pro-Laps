@@ -1,5 +1,5 @@
-import express from 'express';
-import ProductosRouter from './faker/fakeRoutes';
+import express from 'express'
+import ProductosRouter from './faker/router/usuarios.js'
 
 const app = express()
 
