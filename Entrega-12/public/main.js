@@ -1,7 +1,21 @@
 const socket = io()
 
+const authorSchema = new normalizr.schema.Entity("author",{},{idAttribute: "email"});
+const messageSchema = new normalizr.schema.Entity("message", {
+  author: authorSchema
+});
+const messagesSchema = new normalizr.schema.Entity("messages", {
+  messages: [messageSchema]
+});
+
+socket.on('compres', data => {
+    const html = `<strong>${"Porcentaje de compresion: " +data}</strong>`
+    document.getElementById("compresion").innerHTML = html
+})
+
 socket.on('messages', data => {
-    const html = data.map(msj => {
+    const dataDesnor = normalizr.denormalize(data.result, messagesSchema, data.entities)
+    const html = dataDesnor.messages.map(msj => {
         return `<div>
         <strong>${msj.author.nombre}</strong>
         <strong>${msj.fyh}</strong>

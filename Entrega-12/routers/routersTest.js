@@ -11,7 +11,7 @@ productosTest.get('/', (req, res) => {
         productos.push(crearProducto(i+1))
     }
 
-    res.render('index', {productos})
+    res.render('test', {productos})
 })
 
 function crearProducto(id) {

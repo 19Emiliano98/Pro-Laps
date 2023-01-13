@@ -32,7 +32,6 @@ io.on('connection', async socket =>{
     messages: data
   };
   // print(mensajes)
-  console.log('Longitud del objeto original: ' + JSON.stringify(mensajes).length)
 
   const authorSchema = new schema.Entity("author",{},{idAttribute: "email"});
   const messageSchema = new schema.Entity("message", {
@@ -43,15 +42,10 @@ io.on('connection', async socket =>{
   });
   const messagesNorm = normalize(mensajes, messagesSchema);
   // print(messagesNorm)
-  console.log('Longitud del objeto normalizado: ' + JSON.stringify(messagesNorm).length)
 
-  const objDenormalizado = denormalize(messagesNorm.result, messagesSchema, messagesNorm.entities)
-  // print(objDenormalizado)
-  console.log('Longitud del objeto denormalizado: ' + JSON.stringify(objDenormalizado).length)
-
-  console.log('Porcentaje de compresion: ' + (100 - (JSON.stringify(messagesNorm).length * 100 / JSON.stringify(mensajes).length)) + "%")
-
-  socket.emit('messages', listaMensajes)
+  const compresion =100 - JSON.stringify(messagesNorm).length * 100 / JSON.stringify(mensajes).length + "%"
+  socket.emit('messages', messagesNorm)
+  socket.emit('compres', compresion)
 
   socket.on('new-message', async data => {
     if (listaMensajes.length === 0) {
@@ -59,7 +53,7 @@ io.on('connection', async socket =>{
     }
     await chat.addChat({...data, fyh: new Date().toLocaleString(), id: listaMensajes.length +1})
 
-    io.sockets.emit('messages', listaMensajes)
+    io.sockets.emit('messages', messagesNorm)
   })
 })
 
