@@ -1,6 +1,9 @@
 div(class='container.mt-3')
     div(class='jumbotron')     
-        h1(style="color:blue;") agregar Producto
+        h1= saludo
+        form(action="/productos/salir", method="get")
+            button#salir.btn.btn-success.mt-3.mb-5 Salir
+        h2(style="color:blue;") agregar Producto
         br
         form(action="/productos", method="post")
             div(class="form-group")

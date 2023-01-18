@@ -1,9 +1,41 @@
 const container = require('../containers/container');
 const Producto = new container();
 
+const getUsuario = (req, res) => {
+    const usuario = req.session.nombre
+    if (usuario === null || usuario === undefined) {
+        res.render("ingresar")
+    }
+    else{
+        res.redirect("/productos")
+    }
+}
+
+const postUsurio = (req, res) => {
+    const usuario = req.body.nombre
+    req.session.nombre = usuario
+    res.redirect("/productos")
+}
+
+const getSalir = (req, res) => {
+    const usuario = req.session.nombre
+    const saludo = `Hasta luego ${usuario}`
+    req.session.destroy( err => {
+        if (err){
+          res.json({error: "algo hiciste mal", descripcion: err})
+        } else {
+            res.render("saludo", {saludo}) 
+        }
+    })
+}
+
 const get = (req, res) => {
     const id = req.params.id
     if (id) {
+        const usuario = req.session.nombre
+        if (usuario === null || usuario === undefined) {
+            return res.redirect("/ingresar")
+        }
         Producto.get(id)
             .then(productos => {
                 res.json(productos);
@@ -13,9 +45,14 @@ const get = (req, res) => {
             })
     }
     else{
+        const usuario = req.session.nombre
+        if (usuario === null || usuario === undefined) {
+            return res.redirect("/ingresar")
+        }
+        const saludo = `Bienvenido ${usuario}`
         Producto.get()
             .then(productos => {
-                res.render('index', {productos});
+                res.render('index', {productos, saludo});
             })
             .catch(err => {
                 res.json(err);
@@ -24,6 +61,10 @@ const get = (req, res) => {
 }
 
 const add = (req, res) => {
+    const usuario = req.session.nombre
+    if (usuario === null || usuario === undefined) {
+        return res.redirect("/ingresar")
+    }
     const newProducto = {
         timestamp: Date.now(),
         nombre: req.body.nombre,
@@ -43,6 +84,10 @@ const add = (req, res) => {
 }
 
 const update = (req, res) => {
+    const usuario = req.session.nombre
+    if (usuario === null || usuario === undefined) {
+        return res.redirect("/ingresar")
+    }
     const producto = {
         timestamp: Date.now(),
         nombre: req.body.nombre,
@@ -62,6 +107,10 @@ const update = (req, res) => {
 }
 
 const Delete = (req, res) => {
+    const usuario = req.session.nombre
+    if (usuario === null || usuario === undefined) {
+        return res.redirect("/ingresar")
+    }
     Producto.delete( req.params.id)
         .then(id => {
             res.json({ id: id });
@@ -76,4 +125,7 @@ module.exports = {
     add,
     update,
     Delete,
+    getUsuario,
+    postUsurio,
+    getSalir,
 };
