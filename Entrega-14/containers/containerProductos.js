@@ -1,10 +1,16 @@
 import mongoose from "mongoose";
 import modelsProductos from "../models/models.js";
+import dotenv from 'dotenv';
+
+dotenv.config()
+const dataBase = process.env.MONGOCONNECT
+const urlPars = process.env.URLPARS
+const unified = process.env.UNIFIED
 
 mongoose.set('strictQuery', false);
-mongoose.connect("mongodb+srv://19Emiliano98:Siambreta123!@cluster01atlas.5ftbdhr.mongodb.net/ecommerce?retryWrites=true&w=majority", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+mongoose.connect(dataBase, {
+    useNewUrlParser: urlPars,
+    useUnifiedTopology: unified,
 }, (err) => {
     if (err) {
         console.log(err);

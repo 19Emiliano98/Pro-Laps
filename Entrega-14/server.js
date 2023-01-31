@@ -4,6 +4,10 @@ import cookieParser from "cookie-parser";
 import passport from "passport";
 import { normalize, schema } from "normalizr";
 
+import parseArgs from 'minimist';
+
+import dotenv from 'dotenv';
+
 import MongoStore from "connect-mongo";
 
 import { Server } from "socket.io";
@@ -17,17 +21,33 @@ import container from "./containers/containerChat.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const port = process.env.port || 8080;
-const app = express();
+import info from "./routers/info.js";
+import apiRandom from "./routers/apiRandom.js";
 
+dotenv.config()
+
+const config = {
+  alias: { p: 'port', },
+  default: { port: 8080, },
+};
+
+const { port } = parseArgs(process.argv.slice(2), config);
+
+const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-const chat = new container();
 const httpServer = createServer(app);
+const chat = new container();
 const io = new Server(httpServer);
 
-const advancedOptions = {useNewUrlParser: true, useUnifiedTopology:true};
+const dataBase = process.env.MONGOCONNECT
+const urlPars = process.env.URLPARS
+const unified = process.env.UNIFIED
+const maxAge = process.env.AGE
+
+const advancedOptions = {useNewUrlParser: urlPars, useUnifiedTopology:unified};
+
+/* const port = process.env.port || 8080; */
 
 app.set("views", "./views");
 app.set("view engine", "pug");
@@ -35,7 +55,7 @@ app.set("view engine", "pug");
 app.use(cookieParser());
 app.use(session({
   store: MongoStore.create({
-    mongoUrl: "mongodb+srv://19Emiliano98:Siambreta123!@cluster01atlas.5ftbdhr.mongodb.net/ecommerce?retryWrites=true&w=majority",
+    mongoUrl: dataBase,
     mongoOptions: advancedOptions
   }),
   /* secret: "coderhouse", */
@@ -60,6 +80,8 @@ app.use("/productos", productos);
 app.use("/registrarse", registrarse);
 app.use("/salir", salir);
 app.use("/test", productosTest);
+app.use("/info", info);
+app.use("/apirandom", apiRandom);
 
 app.get('/', (req, res) => {
   res.redirect('/productos')
@@ -82,9 +104,9 @@ io.on("connection", async socket =>{
   const messagesSchema = new schema.Entity("messages", {
     messages: [messageSchema],
   });
-  
   const messagesNorm = normalize(mensajes, messagesSchema);
   const compresion =100 - JSON.stringify(messagesNorm).length * 100 / JSON.stringify(mensajes).length + "%";
+  
   socket.emit("messages", messagesNorm);
   socket.emit("compres", compresion);
 
@@ -99,9 +121,9 @@ io.on("connection", async socket =>{
   
 });
 
-/* function print(objeto) {
+function print(objeto) {
   console.log(util.inspect(objeto,false,12,true));
-}; */
+};
 
 httpServer.listen(port, () => {
   console.log(`RUN http://localhost:${port}/ingresar`);

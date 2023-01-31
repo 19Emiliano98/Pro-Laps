@@ -18,13 +18,13 @@ html(lang="en")
               th Precio
               th Stock
               th Foto
-          each val in productos
-            tr
-              td= val.nombre
-              td= val.descripcion
-              td= val.codigo
-              td= val.precio
-              td= val.stock
-              td= val.foto
+            each val in productos
+              tr
+                td= val.nombre
+                td= val.descripcion
+                td= val.codigo
+                td= val.precio
+                td= val.stock
+                td= val.foto
       else
         h3(class="alert alert-danger") No products
