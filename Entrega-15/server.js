@@ -28,9 +28,15 @@ import apiRandom from "./routers/apiRandom.js";
 import cluster from 'cluster'
 import os from 'os'
 
-export const args = parseArgs(process.argv.slice(2));
 
-const SERVERMODE = args._ || "FORK";
+const config = {
+  alias: { p: 'port', m: "modo"},
+  default: { port: 8080, modo: "FORK"},
+};
+
+export const args = parseArgs(process.argv.slice(2), config);
+
+//const SERVERMODE = args.serverMode || "FORK";
 //console.log(args._);
 //console.log(`El dato que trae servermode es = ${SERVERMODE}`);
 
@@ -38,7 +44,9 @@ export const PORT = args.port || 8080;
 
 const numCPUs = os.cpus().length
 
-if (SERVERMODE == "CLUSTER" && cluster.isPrimary) {
+
+
+if (args.modo == "CLUSTER" && cluster.isPrimary) {
   console.log(`Master processID: ${process.pid} is running`);
   console.log(numCPUs)
 
@@ -51,11 +59,6 @@ if (SERVERMODE == "CLUSTER" && cluster.isPrimary) {
   }
 } else {
   dotenv.config()
-
-  const config = {
-    alias: { p: 'port', },
-    default: { port: 8080, },
-  };
 
   const { port } = parseArgs(process.argv.slice(2), config);
 
@@ -150,6 +153,6 @@ if (SERVERMODE == "CLUSTER" && cluster.isPrimary) {
   };
 
   httpServer.listen(port, () => {
-    console.log(`RUN http://localhost:${port}/ingresar`);
+    console.log(`RUN http://localhost:${port}/ingresar processID: ${process.pid}`);
   });
 }
