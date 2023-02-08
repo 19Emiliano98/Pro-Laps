@@ -1,0 +1,20 @@
+1) Ejecutar el servidor (modos FORK y CLUSTER)
+
+node server.js --port 8080
+node server.js --port 8080 --serverMode FORK
+node server.js --port 8080 --serverMode CLUSTER
+
+2) Ejecutar con FOREVER
+
+forever start server.js -w --port 8080 --serverMode CLUSTER
+
+Listar los procesos con forever: forever list
+
+3) Ejecutar con PM2
+
+    MODO FORK
+    pm2 start server.js --watch -- --port 8081
+    MODO CLUSTER
+    pm2 start server.js --watch -i max -- --port 8081
+    LISTAR LOS PROCESOS
+    pm2 list   

@@ -39,7 +39,7 @@ export const PORT = args.port || 8080;
 const numCPUs = os.cpus().length
 
 if (SERVERMODE == "CLUSTER" && cluster.isPrimary) {
-  console.log(`MAster ${process.pid} esta corriendo`);
+  console.log(`Master processID: ${process.pid} is running`);
   console.log(numCPUs)
 
   for (let index = 0; index < numCPUs; index++) {
