@@ -15,9 +15,9 @@ Listar los procesos con forever: forever list
 3) Ejecutar con PM2
 
 MODO FORK
-pm2 start server.js --watch -p 8081
+pm2 start server.js -- --p 8081
 MODO CLUSTER
-pm2 start server.js --watch -i max -p 8081
+pm2 start server.js -i max -- --port 8082
 LISTAR LOS PROCESOS
 pm2 list   
 

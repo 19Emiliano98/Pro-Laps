@@ -53,7 +53,7 @@ if (args.modo == "CLUSTER" && cluster.isPrimary) {
   for (let index = 0; index < numCPUs; index++) {
     cluster.fork();
 
-    cluster.on("exit", (worker, code, signal) => {
+    cluster.on("exit", (worker) => {
       console.log(`worker ${worker.process.pid} termino`);
     });
   }
@@ -95,7 +95,7 @@ if (args.modo == "CLUSTER" && cluster.isPrimary) {
 
   app.use(passport.initialize())
   app.use(passport.session())
-  app.use(express.static(__dirname + "/Public"));
+  //app.use(express.static(__dirname + "/Public"));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
