@@ -36,10 +36,6 @@ const config = {
 
 export const args = parseArgs(process.argv.slice(2), config);
 
-//const SERVERMODE = args.serverMode || "FORK";
-//console.log(args._);
-//console.log(`El dato que trae servermode es = ${SERVERMODE}`);
-
 export const PORT = args.port || 8080;
 
 const numCPUs = os.cpus().length

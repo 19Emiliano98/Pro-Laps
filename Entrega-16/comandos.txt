@@ -19,7 +19,5 @@ pm2 start server.js -- --p 8081
 MODO CLUSTER
 pm2 start server.js -i max -- --port 8082
 LISTAR LOS PROCESOS
-pm2 list   
-
-4) NGINX
+pm2 list
 

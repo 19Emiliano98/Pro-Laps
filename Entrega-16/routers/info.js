@@ -16,7 +16,7 @@ const datos = {
     Argumentos: Argumentos,
     CPUS: `Usados actualmente ${numCPUs}`,
     Plataforma: `Sistema operativo ${Plataforma}`,
-    Version: `Version de node ${Version}`.repeat(10000), // hago un repeat para que se pueda apreciar que compression esta funcionando
+    Version: `Version de node ${Version}`.repeat(10), // hago un repeat para que se pueda apreciar que compression esta funcionando
     Memoria: `Memoria total usada ${Memoria}`,
     Path: `Path de ejecucion ${Path}`,
     Id: `Id del proceso actual de trabajo ${Id}`,
