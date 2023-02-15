@@ -22,7 +22,8 @@ import container from "./containers/containerChat.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import info from "./routers/info.js";
+import infoNoBloqueante from "./routers/infoNoBloqueante.js";
+import infoBloqueante from "./routers/infoNoBloqueante.js";
 import apiRandom from "./routers/apiRandom.js";
 
 // Cluster
@@ -101,7 +102,8 @@ if (args.modo == "CLUSTER" && cluster.isPrimary) {
   app.use("/registrarse", registrarse);
   app.use("/salir", salir);
   app.use("/test", productosTest);
-  app.use("/info", info);
+  app.use("/infoNoBloq", infoNoBloqueante);
+  app.use("/infoBloq", infoBloqueante);
   app.use("/apirandom", apiRandom);
   app.get("/*", (req, res) => {
     logger.warn(`Ruta inexistente`);
