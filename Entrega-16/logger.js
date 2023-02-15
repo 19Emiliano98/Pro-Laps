@@ -3,8 +3,8 @@ import log4js from 'log4js'
 log4js.configure({
     appenders: {
         consola: { type: 'console' },
-        warningFile: { type: 'file', filename: '../logs/warnings.log' },
-        errorFile: { type: 'file', filename: '../logs/errors.log' },
+        warningFile: { type: 'file', filename: './logs/warnings.log' },
+        errorFile: { type: 'file', filename: './logs/errors.log' },
         // filtros
         loggerConsola: {
             type: 'logLevelFilter',
