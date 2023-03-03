@@ -90,8 +90,9 @@ if (args.modo == "CLUSTER" && cluster.isPrimary) {
 
   app.use(passport.initialize())
   app.use(passport.session())
-  app.use(express.static(__dirname + "/Public"));
-  //app.use('/public', express.static(`${__dirname}/storage/imgs`));
+  app.use(express.static('public'))
+  //app.use(express.static(__dirname + "/Public"));
+  //app.use('/public', express.static(`${__dirname}/Public/img/uploads`));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
