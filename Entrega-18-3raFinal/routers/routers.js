@@ -5,6 +5,9 @@ import { register, login, } from "../middleware/registerLoginPassport.js";
 import requireAuthentication from "../middleware/requireAuthentication.js"
 import { Router } from "express";
 
+import multer from 'multer';
+const upload = multer({ dest: './public/img/uploads/' })
+
 const productos = Router();
 const ingresar = Router();
 const registrarse = Router();
@@ -26,7 +29,7 @@ ingresar.get("/errorIngresar", (req, res) => {
 
 registrarse.get("/", getSignUp);
 
-registrarse.post("/", passport.authenticate("register", {
+registrarse.post("/", upload.single('avatar'), passport.authenticate("register", {
     failureRedirect: "/registrarse/errorRegistro", 
     successRedirect: "/productos",
 }));

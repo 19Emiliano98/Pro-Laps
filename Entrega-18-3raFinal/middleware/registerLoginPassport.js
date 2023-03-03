@@ -22,7 +22,8 @@ export const register = new LocalStrategy({
         name,
         address,
         age,
-        phoneNumber
+        phoneNumber,
+        avatar: req.file.path
     };
 
     dbUsuario.addUsuario(newUser);

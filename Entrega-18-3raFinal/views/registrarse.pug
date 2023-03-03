@@ -10,7 +10,7 @@ html(lang="en")
     div(class='container.mt-3')
       div(class='jumbotron')
         b Crear Cuenta
-        form(action="/registrarse", method="post")
+        form(action="/registrarse", method="post", enctype="multipart/form-data")
           div(class="form-group")
             label(for="name")
               b Nombre
@@ -24,9 +24,13 @@ html(lang="en")
               b Edad
             input#age.form-control(type="text", name="age")
           div(class="form-group")
-            label(for="phoneNuber")
+            label(for="phoneNumber")
               b Numero de telefono
-            input#phoneNuber.form-control(type="text", name="phoneNuber")
+            input#phoneNumber.form-control(type="text", name="phoneNumber")
+          div(class="form-group")
+            label(for="avatar")
+              b Imagen
+            input#file.form-control(type="file", name="avatar")
           div(class="form-group")
             label(for="username")
               b Correo
