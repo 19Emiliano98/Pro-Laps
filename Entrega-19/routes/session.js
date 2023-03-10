@@ -5,12 +5,12 @@ import multer from "multer";
 
 const register = Router();
 const login = Router();
-const inicio = Router();
-const salir = Router();
+const start = Router();
+const goOut = Router();
 
 const upload = multer({ dest: './public/img/uploads/' });
 
-inicio.get('/', controller.getInicio);
+start.get('/', controller.getInicio);
 
 passport.use('register', register);
 passport.use('login', login);
@@ -23,6 +23,6 @@ login.get('/', controller.getSingIn);
 login.post('/', passport.authenticate('login', { failureRedirect: '/login/errorLogin', successRedirect: '/home' }));
 login.get('/errorLogin', controller.getErrorLogin);
 
-salir.get('/', controller.getLogout, deleteCarrito ); // deleteCarrito sale de controlerCart del trabajo anterior
+goOut.get('/', controller.getLogout, deleteCarrito ); // deleteCarrito sale de controlerCart del trabajo anterior tengo que activarlo
 
-export { register, login };
+export { register, login, start, goOut };
