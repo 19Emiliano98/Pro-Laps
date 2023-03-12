@@ -1,41 +1,22 @@
-import containerProducts from '../DAO/products.js';
 import logger from '../services/logger.js';
 
-const products = new containerProducts();
+import { isUserNeutral, isUserAdmin, noneUser } from '../services/products.js';
+
+
+
 
 export const get = (req, res) => {
-	const { url, method } = req;
-	logger.info(`Ruta ${method} ${url}`);
-	if (req.user === undefined) {
-		return products.get()
-			.then((productos) => {
-				res.render('User/productosUser', { productos });
-			})
-			.catch((err) => {
-				res.json(err);
-			});
-	}
-	const user = req.user.username;
+	const { url, method, user } = req;
+	
+	isUserNeutral( url, method, user );
+	
+	const admin = req.user.admin
 	const avatar = req.user.photo;
-	const saludo = `Bienvenido ${user}`;
-	if (req.user?.admin) {
-		return products
-			.get()
-			.then((productos) => {
-				res.render('Admin/productosAdmin', { productos, saludo, avatar });
-			})
-			.catch((err) => {
-				res.json(err);
-			});
-	}
-	products
-		.get()
-		.then((productos) => {
-			res.render('UserLogin/productosUserLogin', { productos, saludo, avatar });
-		})
-		.catch((err) => {
-			res.json(err);
-		});
+	const saludo = `Bienvenido ${req.user.userName}`;
+	
+	isUserAdmin( admin, saludo, avatar );
+	
+	noneUser( saludo, avatar )
 };
 
 export const getB = (req, res) => {

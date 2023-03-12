@@ -12,7 +12,7 @@ export const getErrorRegister = (req, res) => {
 
 export const getSingIn = (req, res) => {
 	const { url, method } = req;
-	session.getErrorRegister( method, url );
+	session.singIn( method, url );
 };
 
 export const getErrorLogin = (req, res) => {

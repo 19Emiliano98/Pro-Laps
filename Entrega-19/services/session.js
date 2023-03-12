@@ -13,7 +13,7 @@ export const getErrorRegister = ( method, url ) => {
 	return res.render('User/registerError'); // archivo pug
 }
 
-export const SingIn = ( method, url ) => {
+export const singIn = ( method, url ) => {
     logger.info(`Ruta ${method} ${url}`);
 	if (req.isAuthenticated()) {
 		return res.redirect('/products');

@@ -1,7 +1,10 @@
 import { Router } from 'express';
-import controller from '../controllers/session.js';
 import passport from 'passport';
 import multer from "multer";
+
+import controller from '../controllers/session.js';
+
+
 
 const register = Router();
 const login = Router();

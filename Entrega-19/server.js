@@ -1,9 +1,10 @@
 import express from 'express';
+import dotenv from 'dotenv';
+
 import { register, login } from './routes/session.js';
 import { start, goOut, notExist, redirect } from './routes/landing.js';
 import products from './routes/products.js';
 import cart from './routes/cart.js';
-import dotenv from 'dotenv';
 
 dotenv.config();
 

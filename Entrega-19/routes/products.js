@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import authentication from './middlewares/authentication.js';
+
 import { get, getB, add, update, Delete } from '../DAO/products.js';
 
 const products = Router();
