@@ -20,7 +20,7 @@ app.use('/login', login);//
 app.use('/home', start);//
 app.use('/products', products);//
 app.use('/cart', cart)//
-//app.use('/messages', messages);
+app.use('/chat', messages);
 app.use('/exit', goOut);//
 
 httpServer.listen(PORT, () => {

@@ -1,2 +1,8 @@
 import { Router } from 'express';
-import authentication from './middlewares/authentication.js';
+import { textChat } from '../controllers/chat.js';
+
+const messages = Router();
+
+messages.get('/', textChat);
+
+export default chats;
