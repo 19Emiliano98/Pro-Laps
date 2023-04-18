@@ -41,10 +41,8 @@ const postProductoCarrito = async (req, res) => {
 	}
 	
 	await cart.addProductCart(correo, data);
-	
 	cart.incremental(correo);
-
-
+	
 	res.redirect('/products');
 };
 
