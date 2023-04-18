@@ -54,7 +54,7 @@ export default class daoCart {
 		}
 	}
 
-	async incremental(correo){
+	async addCantToCart(correo){
 		try {
 			const cart = await modelCart.updateOne({ 'author.username': correo }, [ { $addFields: { 'productos.cant': 1 } } ] );
 			logger.info('se incrementa en 1 la cantidad');

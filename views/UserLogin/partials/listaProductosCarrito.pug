@@ -9,6 +9,7 @@ h2(style="color:crimson;") Listado de Compra
                     th Precio
                     th Stock
                     th Foto
+                    th Cantidad
                 each val in productos
                     tr
                         td= val.name
@@ -17,6 +18,7 @@ h2(style="color:crimson;") Listado de Compra
                         td= val.price
                         td= val.stock
                         td= val.photo
+                        td= val.cant
                         td
         div
             form(onsubmit=`return emptyCart()`)
