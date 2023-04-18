@@ -34,14 +34,17 @@ const postProductoCarrito = async (req, res) => {
 	const correo = req.user.username
 	const ifExistCart = await cart.getCart(correo)
 	const data = await products.get(req.body.id);
-	
+
 	// El if va a comprobar si el usuario ya tiene un carrito creado o no
 	if(ifExistCart.length == 0){
 		await cart.addCart(req.user) //con esto creo un carrito 
 	}
-
-	cart.addProductCart(correo, data); 
 	
+	await cart.addProductCart(correo, data);
+	
+	cart.incremental(correo);
+
+
 	res.redirect('/products');
 };
 

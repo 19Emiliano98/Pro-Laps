@@ -156,6 +156,7 @@ const add = (req, res) => {
 		price: body.price,
 		photo: body.photo,
 		stock: body.stock,
+		cant: 0,
 	};
 	
 	return products.add(newProduct)

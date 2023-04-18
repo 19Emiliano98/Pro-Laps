@@ -11,6 +11,7 @@ const schemaProducts = new mongoose.Schema({
 	price: Number,
 	photo: String,
 	stock: Number,
+	cant: Number,
 });
 
 const modelProducts = mongoose.model(collectionProducts, schemaProducts);

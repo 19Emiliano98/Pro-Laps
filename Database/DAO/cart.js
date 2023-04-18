@@ -44,13 +44,23 @@ export default class daoCart {
 		return result;
 	}
 	
-	async addProductCart (correo, data){
+	async addProductCart(correo, data){
 		try {
 			const cart = await modelCart.updateOne({ 'author.username': correo }, { $push: { productos: { $each: data } } });
 			logger.info('producto agregado al carrito');
 			return cart;
 		} catch (error) {
-			logger.error(error)
+			logger.error(error);
+		}
+	}
+
+	async incremental(correo){
+		try {
+			const cart = await modelCart.updateOne({ 'author.username': correo }, );
+			logger.info('se incrementa en 1 la cantidad');
+			return cart;
+		} catch (error) {
+			logger.error(error);
 		}
 	}
 
