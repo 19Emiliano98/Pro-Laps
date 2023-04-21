@@ -25,30 +25,39 @@ const getCarrito = async (req, res) => {
 	res.render('UserLogin/carrito', { result, avatar, saludo, productos });
 };
 
-// get listo //
-
 const postProductoCarrito = async (req, res) => {
 	const { url, method } = req;
 	logger.info(`Ruta ${method} ${url}`);
 	
-	const correo = req.user.username
-	const ifExistCart = await cart.getCart(correo)
-	const data = await products.get(req.body.id);
-
+	const pid = req.body.id;
+	const mail = req.user.username;
+	const cartContent = await cart.getCart(mail);
+	const data = await products.get(pid);
+	let aux = [];
+	
 	// El if va a comprobar si el usuario ya tiene un carrito creado o no
-	if(ifExistCart.length == 0){
-		await cart.addCart(req.user) //con esto creo un carrito 
+	if(cartContent.length == 0){
+		await cart.addCart(req.user); //con esto creo un carrito 
 	}
 	
-	await cart.addProductCart(correo, data);
-	cart.addCantToCart(correo);
+	cartContent.forEach(p => p.productos.forEach(x => aux.push(x._id)));
+	const search = aux.find( x => x == pid );
+	
+	if( search !== undefined ){
+		console.log('ya tengo el producto, sumame una unidad');
+		cart.increment(mail)
+	}else{
+		console.log('No tengo este producto, creamelo');
+		await cart.addProductCart(mail, data);
+		cart.addCantToCart(mail);
+	}
 	
 	res.redirect('/products');
 };
 
 const emptyCart = (req, res) => {
 	const { url, method, user, params } = req;
-	logger.info(`Ruta ${method} ${url}`)
+	logger.info(`Ruta ${method} ${url}`);
 
 	const correo = user.username;
 	const resultProduct = params;
@@ -56,10 +65,6 @@ const emptyCart = (req, res) => {
 	cart.emptyCart( correo, resultProduct );
 	res.redirect('/cart');
 };
-
-/* const deleteProductCart = () => {
-
-} */
 
 const deleteCarrito = (req, res) => {
 	const mail = req.user.username;

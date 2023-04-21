@@ -39,7 +39,7 @@ export default class daoCart {
 		const cartAdd = new modelCart(data)
 		const result = await cartAdd.save();
 		
-		console.log('se guardo el carrito');
+		logger.info('se guardo el carrito');
 		
 		return result;
 	}
@@ -57,6 +57,16 @@ export default class daoCart {
 	async addCantToCart(correo){
 		try {
 			const cart = await modelCart.updateOne({ 'author.username': correo }, [ { $addFields: { 'productos.cant': 1 } } ] );
+			logger.info('se incrementa en 1 la cantidad');
+			return cart;
+		} catch (error) {
+			logger.error(error);
+		}
+	}
+
+	async increment(mail){
+		try {
+			const cart = await modelCart.updateOne({ 'author.username': mail }, [ { $inc: { "productos.cant": 1 } } ] );
 			logger.info('se incrementa en 1 la cantidad');
 			return cart;
 		} catch (error) {
