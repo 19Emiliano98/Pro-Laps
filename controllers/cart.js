@@ -30,14 +30,14 @@ const postProductoCarrito = async (req, res) => {
 	logger.info(`Ruta ${method} ${url}`);
 	
 	const pid = req.body.id;
-	const mail = req.user.username;
-	const cartContent = await cart.getCart(mail);
+	const correo = req.user.username;
+	const codeProduct = req.body.code
+	const cartContent = await cart.getCart(correo);
 	const data = await products.get(pid);
 	let aux = [];
 	
-	// El if va a comprobar si el usuario ya tiene un carrito creado o no
 	if(cartContent.length == 0){
-		await cart.addCart(req.user); //con esto creo un carrito 
+		await cart.addCart(req.user); 
 	}
 	
 	cartContent.forEach(p => p.productos.forEach(x => aux.push(x._id)));
@@ -45,11 +45,11 @@ const postProductoCarrito = async (req, res) => {
 	
 	if( search !== undefined ){
 		console.log('ya tengo el producto, sumame una unidad');
-		cart.increment(mail)
+		await cart.increment(codeProduct)
 	}else{
 		console.log('No tengo este producto, creamelo');
-		await cart.addProductCart(mail, data);
-		cart.addCantToCart(mail);
+		await cart.addProductCart(correo, data);
+		await cart.increment(codeProduct)
 	}
 	
 	res.redirect('/products');

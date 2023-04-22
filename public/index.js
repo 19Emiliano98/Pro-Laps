@@ -27,10 +27,10 @@ function Actualizar(pid) {
 	});
 }
 
-function añadirCarrito(pid) {
+function añadirCarrito(pid, code) {
 	fetch(`${baseUrl}/cart`, {
 		method: 'POST',
-		body: JSON.stringify({ id: pid }),
+		body: JSON.stringify({ id: pid, code: code }),
 		headers: {
 			'Content-type': 'application/json; charset=UTF-8',
 		},

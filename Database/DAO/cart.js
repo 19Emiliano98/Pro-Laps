@@ -54,19 +54,13 @@ export default class daoCart {
 		}
 	}
 
-	async addCantToCart(correo){
+	async increment(codeProduct){
 		try {
-			const cart = await modelCart.updateOne({ 'author.username': correo }, [ { $addFields: { 'productos.cant': 1 } } ] );
-			logger.info('se incrementa en 1 la cantidad');
-			return cart;
-		} catch (error) {
-			logger.error(error);
-		}
-	}
-
-	async increment(mail){
-		try {
-			const cart = await modelCart.updateOne({ 'author.username': mail }, [ { $inc: { "productos.cant": 1 } } ] );
+			const cart = await modelCart.updateOne(
+				{"productos.code": codeProduct },
+				{ $inc: { "productos.$.cant": 1 } },
+				{ "multi": true }
+			);
 			logger.info('se incrementa en 1 la cantidad');
 			return cart;
 		} catch (error) {
