@@ -37,3 +37,13 @@ function añadirCarrito(pid, code) {
 	});
 }
 
+function generateOrder(pid) {
+	fetch(`${baseUrl}/orders`, {
+		method: 'POST',
+		body: JSON.stringify({ id: pid }),
+		headers: {
+			'Content-type': 'application/json; charset=UTF-8',
+		},
+	});
+}
+

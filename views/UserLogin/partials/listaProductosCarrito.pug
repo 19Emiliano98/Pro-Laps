@@ -21,6 +21,8 @@ h2(style="color:crimson;") Listado de Compra
                         td= val.cant
                         td
         div
+            form(onsubmit=`return generateOrder()`)
+                button.btn.btn-success.btn-sm(type='submit') Realizar Compra
             form(onsubmit=`return emptyCart()`)
                 button.btn.btn-danger.btn-sm(type='submit') Vaciar carrito
     else

@@ -9,6 +9,7 @@ import { start, goOut, notExist, redirect } from './routes/landing.js';
 import { products } from './routes/products.js';
 import { messages } from './routes/chat.js';
 import { cart } from './routes/cart.js';
+import { orders } from './routes/orders.js';
 
 import { createServer } from 'http';
 import { Server } from 'socket.io';
@@ -55,7 +56,8 @@ app.use('/home', start);
 app.use('/register', register);
 app.use('/login', login);
 app.use('/products', products);
-app.use('/cart', cart)
+app.use('/cart', cart);
+app.use('/orders', orders);
 app.use('/chat', messages);
 app.use('/exit', goOut);
 app.use('/', redirect);
