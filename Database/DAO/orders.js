@@ -25,13 +25,13 @@ export default class daoOrders {
 
     async postOrder( user, data ) {
 		const orderToPost = {
-			buyer: {
+			author: {
                 username: user.username,
                 phoneNumber: user.phoneNumber,
                 address: user.address,
             },
             items: data,
-            timestamp: Date.now(),
+            date: new Date()
 		};
 		
 		const orderPost = new modelOrders(orderToPost)

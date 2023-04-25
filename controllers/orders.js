@@ -21,15 +21,19 @@ const postOrders = async (req, res) => {
 	const { url, method, user } = req;
 	logger.info(`Ruta ${method} ${url}`);
     
-    const mail = req.user.username;
+    const mail = user.username;
+    console.log(mail);
     let aux = [];
     
     const cartFinished = await cart.getCart(mail);
     cartFinished.forEach( x => x.productos.forEach( x => aux.push(x) ) );
     
     await orders.postOrder( user, aux );
+    await cart.deleteCart( mail );
     
-    console.log(aux);
+    logger.info('Orden generada');
+    
+    res.redirect('/products');
 };
 
 export { getOrders, postOrders }

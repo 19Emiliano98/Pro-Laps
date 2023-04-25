@@ -79,7 +79,8 @@ export default class daoCart {
 	
 	async deleteCart(correo) {
 		try {
-			const producDelete = await modelCart.deleteOne({ author: { username: correo } });
+			const producDelete = await modelCart.deleteOne({ 'author.username': correo  });
+			logger.info('Cart deleted');
 			return producDelete;
 		} catch (error) {
 			logger.error('Error al borrar el carrito ' + err);
