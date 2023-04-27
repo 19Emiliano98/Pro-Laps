@@ -52,8 +52,8 @@ export const passRegister = new LocalStrategy({ passReqToCallback: true }, async
 
 		await dbUser.add(newUser);
 		try {
-			const mensaje = await transporter.sendMail(mailOptions)
-			logger.info(mensaje)
+			const mensaje = await transporter.sendMail(mailOptions);
+			logger.info(mensaje);
 		} catch (err) {
 			logger.error(err)
 		}

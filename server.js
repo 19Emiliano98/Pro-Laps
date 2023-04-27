@@ -17,6 +17,8 @@ import { Server } from 'socket.io';
 import passport from 'passport';
 import dotenv from 'dotenv';
 import logger from './services/logger.js';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpecs } from './swaggerSpecs.js';
 
 dotenv.config();
 
@@ -51,6 +53,8 @@ app.use(passport.session());
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 app.use('/home', start);
 app.use('/register', register);

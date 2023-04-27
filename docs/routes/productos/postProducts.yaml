@@ -1,0 +1,15 @@
+paths:
+  /products:
+    post:
+      summary: Postea el producto que vamos a cargar ( admin )
+      tags:
+        - products
+      responses:
+        "201":
+          description: Carga de un producto nuevo unicamente posible por el admin de la web
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/requestBodies/NewProduct'

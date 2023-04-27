@@ -175,6 +175,7 @@ const update = (req, res) => {
 	const newProduct = {
 		timestamp: Date.now(),
 		name: body.name,
+		category: body.category,
 		description: body.description,
 		code: body.code,
 		price: body.price,

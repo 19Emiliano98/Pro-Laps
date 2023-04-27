@@ -1,0 +1,29 @@
+paths:
+  /products/{id}:
+    put:
+      summary: Actualiza el producto que vamos a cargar ( admin )
+      tags:
+        - products
+      parameters:
+      - name: id
+        in: path
+        description: El parametro de la ruta toma el id del producto
+        required: true
+        type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/products'
+      responses:
+        "200":
+          description: Actualiza un producto por el admin de la web
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/products'
+        "404":
+          description: Product not found Error

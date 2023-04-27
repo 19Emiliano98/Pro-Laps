@@ -1,0 +1,29 @@
+paths:
+  /products/categorias/{category}:
+    get:
+      summary: Retorna el producto seleccionado por params
+      tags:
+        - products
+      parameters:
+      - name: category
+        in: path
+        description: El parametro de la ruta toma el category del producto
+        required: true
+        type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/products'
+      responses:
+        "200":
+          description: Producto seleccionado por Categoria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/products'
+        "404":
+          description: Product not found Error

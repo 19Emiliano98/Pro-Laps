@@ -1,0 +1,29 @@
+paths:
+  /products/{id}:
+    get:
+      summary: Retorna el producto seleccionado por params
+      tags:
+        - products
+      parameters:
+      - name: id
+        in: path
+        description: El parametro de la ruta toma el id del producto
+        required: true
+        type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/products'
+      responses:
+        "200":
+          description: Producto seleccionado por ID
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/products'
+        "404":
+          description: Product not found Error

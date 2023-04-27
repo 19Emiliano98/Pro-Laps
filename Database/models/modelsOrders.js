@@ -8,6 +8,7 @@ const schemaOrders = new mongoose.Schema({
 		phoneNumber: { type: Number, require: true },
         address: { type: String, require: true },
     },
+    numOrder: { type: Number, require: true, default: 1 },
     state: { type: String, require: true, default: 'generada' },
     items:[],
 	date: String,

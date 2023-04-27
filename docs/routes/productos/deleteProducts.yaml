@@ -1,0 +1,17 @@
+paths:
+  /products/{id}:
+    delete:
+      summary: Elimina el producto cuando le proporcionas un id
+      tags:
+        - products
+      parameters:
+      - name: id
+        in: path
+        description: El parametro de la ruta obtiene el id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: Eliminado con exito
+        "404":
+          description: Product not found Error

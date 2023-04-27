@@ -1,0 +1,43 @@
+# NewProduct
+components:
+  requestBodies:
+    NewProduct:
+      type: object
+      required:
+        - name
+        - category
+        - description
+        - code
+        - price
+        - photo
+        - stock
+      properties:
+        name:
+          type: string
+          description: Nompre del producto
+        category:
+          type: string
+          description: Categoria del producto
+        description:
+          type: string
+          description: Descripcion del producto
+        code:
+          type: string
+          description: Codigo del Producto con el que se va a identificar en el E-commerce
+        price:
+          type: number
+          description: Precio del producto
+        photo:
+          type: string
+          description: URL de la Imagen del producto
+        stock:
+          type: number
+          description: Cantidad de productos en stock
+      example:
+        name: Versace
+        category: camisas
+        description: camisa elegante
+        code: CC-AA
+        price: 300
+        photo: img.jpg
+        stock: 100

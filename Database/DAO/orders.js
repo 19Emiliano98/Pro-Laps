@@ -16,20 +16,21 @@ export default class daoOrders {
     
     async getOrder(mail) {
 		try {
-			const orders = await modelOrders.find({ 'buyer.username': mail });
+			const orders = await modelOrders.find({ 'author.username': mail });
 			return orders;
 		} catch (err) {
 			logger.error('Error al buscar la orden de compra ' + err);
 		}
 	}
 
-    async postOrder( user, data ) {
+    async postOrder( user, data, numberOrd ) {
 		const orderToPost = {
 			author: {
                 username: user.username,
                 phoneNumber: user.phoneNumber,
                 address: user.address,
             },
+			numOrder: numberOrd,
             items: data,
             date: new Date()
 		};

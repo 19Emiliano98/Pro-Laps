@@ -44,10 +44,8 @@ const postProductoCarrito = async (req, res) => {
 	const search = aux.find( x => x == pid );
 	
 	if( search !== undefined ){
-		console.log('ya tengo el producto, sumame una unidad');
 		await cart.increment(codeProduct)
 	}else{
-		console.log('No tengo este producto, creamelo');
 		await cart.addProductCart(correo, data);
 		await cart.increment(codeProduct)
 	}
