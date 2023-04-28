@@ -1,0 +1,9 @@
+paths:
+  /:
+    get:
+      summary: Redirecciona a la pagina inicial si no se declara una ruta
+      tags:
+        - landing
+      responses:
+        "200":
+          description: Solo va a mostrar un texto

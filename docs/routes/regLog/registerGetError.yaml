@@ -1,0 +1,9 @@
+paths:
+  /register/errorLogin:
+    get:
+      summary: Retorna un mensaje de error
+      tags:
+        - registerAndLogin
+      responses:
+        "200":
+          description: Error de registro

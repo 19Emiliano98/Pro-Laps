@@ -1,0 +1,11 @@
+paths:
+  /home:
+    get:
+      summary: Retorna la pagina inicial
+      tags:
+        - landing
+      responses:
+        "200":
+          description: Solo va a mostrar un texto
+        "404":
+          description: Product not found Error

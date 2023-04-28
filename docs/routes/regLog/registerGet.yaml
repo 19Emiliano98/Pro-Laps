@@ -1,0 +1,9 @@
+paths:
+  /register:
+    get:
+      summary: Retorna las funcionalidades del registro en caso de que no aa una sesion logueada
+      tags:
+        - registerAndLogin
+      responses:
+        "200":
+          description: Formulario para registro

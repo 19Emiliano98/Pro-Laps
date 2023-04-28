@@ -1,0 +1,9 @@
+paths:
+  /*:
+    get:
+      summary: Va a indicar que la ruta ingresada no existe
+      tags:
+        - landing
+      responses:
+        "200":
+          description: Solo va a mostrar un texto

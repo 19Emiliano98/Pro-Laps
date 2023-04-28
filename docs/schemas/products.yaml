@@ -42,7 +42,7 @@ components:
           type: number
           description: Cantidad de productos en stock
       example:
-        id: 643df20356e60a82bf2d617d
+        _id: 643df20356e60a82bf2d617d
         timestamp: 1681781251666
         name: Versace
         category: camisas

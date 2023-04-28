@@ -1,3 +1,9 @@
-tags:
+productTags:
   name: products
   description: Recursos para administrar Productos
+landingTags:
+  name: landing
+  description: Detalles de como vas a desplazarte por la web
+authTags:
+  name: registerAndLogin
+  description: Detalles de registro de usuarios e inicios de sesion

@@ -1,0 +1,11 @@
+paths:
+  /exit:
+    get:
+      summary: Retorna la pagina sin sesiones logueadas al cerrar sesion
+      tags:
+        - landing
+      responses:
+        "200":
+          description: Solo va a mostrar un texto
+        "404":
+          description: Product not found Error
