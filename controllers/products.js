@@ -143,7 +143,7 @@ const getB = (req, res) => {
 		});
 };
 
-const add = (req, res) => {
+const add = async (req, res) => {
 	const { url, method, body } = req;
 	logger.info(`Ruta ${method} ${url}`);
 	
