@@ -6,6 +6,6 @@ paths:
         - landing
       responses:
         "200":
-          description: Solo va a mostrar un texto
+          description: Ruta para salir de la sesion
         "404":
           description: Product not found Error

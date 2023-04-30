@@ -24,10 +24,7 @@ async function sendMailOrder(dataOrd){
                     Se ha registrado una nueva orden
                 </h1>
                 <p>
-                    Numero de orden: ${dataOrd[dataOrd.lastIndexOf('author.username')].numOrder}<br>
-                    Usuario que realizo la compra: ${dataOrd[0].author.username}<br>
-                    Contacto: ${dataOrd[0].author.phoneNumber}<br>
-                    Estado de la Orden: ${dataOrd[0].state}
+                    Detalle del producto, en proceso de correccion
                 </p>
                 `
     } 

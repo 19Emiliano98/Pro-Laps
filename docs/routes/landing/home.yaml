@@ -6,6 +6,6 @@ paths:
         - landing
       responses:
         "200":
-          description: Solo va a mostrar un texto
+          description: Redirige al home
         "404":
           description: Product not found Error

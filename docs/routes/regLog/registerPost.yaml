@@ -1,0 +1,15 @@
+paths:
+  /register:
+    post:
+      summary: Postea el registro del usuario nuevo
+      tags:
+        - registerAndLogin
+      responses:
+        "201":
+          description: Es la creacion de un usuario nuevo que se almacena en Mongo
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/requestBodies/newRegister'

@@ -6,4 +6,4 @@ paths:
         - landing
       responses:
         "200":
-          description: Solo va a mostrar un texto
+          description: Redirige a home

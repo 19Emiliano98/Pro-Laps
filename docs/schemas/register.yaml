@@ -1,0 +1,53 @@
+# newRegister
+components:
+  requestBodies:
+    newRegister:
+      type: object
+      required:
+        - name
+        - lastName
+        - address
+        - age
+        - phoneNumber
+        - photo
+        - username
+        - password
+        - admin
+      properties:
+        name:
+          type: string
+          description: Nompre del Usuario
+        lastName:
+          type: string
+          description: Apellido del Usuario
+        address:
+          type: string
+          description: Domicilio
+        age:
+          type: number
+          description: Edad
+        phoneNumber:
+          type: number
+          description: Numero de contacto
+        photo:
+          type: string
+          description: URL de la Imagen del producto
+        username:
+          type: string
+          description: Nombre de usuario que se visualiza en la pagina
+        password:
+          type: string
+          description: Pass de la cuenta ( encryptada )
+        admin:
+          type: boolean
+          description: Verificador para identificar si es un admin o no
+      example:
+        name: Emiliano
+        lastName: Caballero
+        address: Calle 123
+        age: 24
+        phoneNumber: 3413456543
+        photo: img.jpg
+        username: Emi98
+        password: dkcvpeprottrldlfderer
+        admin: true
