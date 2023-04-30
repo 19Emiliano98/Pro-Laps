@@ -30,9 +30,8 @@ const postOrders = async (req, res) => {
     const dataOrd = await orders.getOrder( mail );
     const numberOrder = dataOrd.length + 1;
     await orders.postOrder( user, aux, numberOrder );
-    //await cart.deleteCart( mail );
+    await cart.deleteCart( mail );
     
-    console.log(dataOrd);
     sendMailOrder( dataOrd );
 
     logger.info('Orden generada');

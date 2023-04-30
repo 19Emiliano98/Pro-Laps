@@ -1,0 +1,15 @@
+paths:
+  /orders:
+    post:
+      summary: Postea la orden de compra
+      tags:
+        - orders
+      responses:
+        "201":
+          description: Postea una orden nueva
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/requestBodies/newOrders'

@@ -1,0 +1,55 @@
+# orders
+components:
+  schemas:
+    orders:
+      type: object
+      required:
+        - _id
+        - author
+        - numOrder
+        - state
+        - items
+        - date
+      properties:
+        _id: 
+          type: string
+          description: ID generado por mongo
+        author: 
+          type: object
+          description: Objeto donde las propiedades indican la informacion del creador de la orden
+        numOrder:
+          type: number
+          description: Numero de orden generada en total
+        state:
+          type: boolean
+          description: Estado de la orden
+        items:
+          type: array
+          description: Array donde se guardaran los items seleccionados
+        date:
+          type: string
+          description: Fecha de la creacion de la orden
+      example:
+        _id: 643df20356e60a82bf2d617d
+        author: {
+          username: Emiliano@gmail.com,
+          phoneNumber: 3413971779,
+          address: Calle 123
+        }
+        numOrder: 1
+        state: generada
+        items: [
+          {
+            _id: ObjectId('643df20356e60a82bf2d617d'),
+            timestamp: "1681781251666",
+            name: Versace,
+            category: camisas,
+            description: Camisa elegante,
+            code: CC-AA,
+            price: 300,
+            photo: img.jpg,
+            stock: 100,
+            cant: 1
+          }
+        ]
+        date: Sat Apr 29 2023 12:05:12 GMT-0300 (hora estándar de Argentina)

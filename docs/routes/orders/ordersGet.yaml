@@ -1,17 +1,17 @@
 paths:
   /orders:
     get:
-      summary: Retorna todos los productos almacenados disponibles
+      summary: Retorna todas las ordenes almacenadas en mongo
       tags:
-        - products
+        - orders
       responses:
         "200":
-          description: Todos los productos disponibles
+          description: Todas las ordenes creadas
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/products'
+                  $ref: '#/components/schemas/orders'
         "404":
           description: Product not found Error
