@@ -1,0 +1,15 @@
+paths:
+  /login:
+    post:
+      summary: Postea el inicio del usuario
+      tags:
+        - registerAndLogin
+      responses:
+        "201":
+          description: Inicio de sesion del usuario
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/requestBodies/login'

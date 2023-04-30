@@ -1,5 +1,5 @@
 paths:
-  /register/errorLogin:
+  /register/registrationError:
     get:
       summary: Retorna un mensaje de error
       tags:

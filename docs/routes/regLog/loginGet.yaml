@@ -1,0 +1,9 @@
+paths:
+  /login:
+    get:
+      summary: Retorna las funcionalidades del registro en caso de que no haya una sesion logueada
+      tags:
+        - registerAndLogin
+      responses:
+        "200":
+          description: Formulario para Logueo
