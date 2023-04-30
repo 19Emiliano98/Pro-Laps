@@ -1,0 +1,15 @@
+paths:
+  /cart:
+    post:
+      summary: Postea el carro de compra
+      tags:
+        - carts
+      responses:
+        "201":
+          description: Postea un carro nuevo en mongo
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/requestBodies/newCarts'

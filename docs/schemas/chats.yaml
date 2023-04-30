@@ -1,0 +1,30 @@
+# chats
+components:
+  schemas:
+    chats:
+      type: object
+      required:
+        - _id
+        - author
+        - text
+        - fyh
+      properties:
+        _id: 
+          type: string
+          description: ID generado por mongo
+        author: 
+          type: object
+          description: Objeto donde las propiedades indican la informacion del creador del mensaje
+        text:
+          type: string
+          description: Mensaje de un usuario
+        fyh:
+          type: string
+          description: Horario de envio del mensaje
+      example:
+        _id: 643df20356e60a82bf2d617d
+        author: {
+          name: Emiliano
+        }
+        text: Hola como estan?
+        fyh: 26/3/2023, 20:35:05

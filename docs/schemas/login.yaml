@@ -9,10 +9,10 @@ components:
       properties:
         username:
           type: string
-          description: Nombre de usuario que se visualiza en la pagina
+          description: E-mail del usuario
         password:
           type: string
           description: Pass de la cuenta ( encryptada )
       example:
-        username: Emi98
+        username: Emiliano@gmail.com
         password: dkcvpeprottrldlfderer

@@ -1,0 +1,15 @@
+paths:
+  /chat:
+    post:
+      summary: Postea un mensaje
+      tags:
+        - messagges
+      responses:
+        "201":
+          description: Postea un mensaje creado por algun usuario
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/requestBodies/newChat'

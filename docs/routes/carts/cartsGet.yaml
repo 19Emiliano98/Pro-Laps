@@ -1,0 +1,17 @@
+paths:
+  /cart:
+    get:
+      summary: Retorna el carrito creado por el usuario al seleccionar una compra
+      tags:
+        - carts
+      responses:
+        "200":
+          description: Todos los productos que tiene el carrito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/carts'
+        "404":
+          description: Product not found Error

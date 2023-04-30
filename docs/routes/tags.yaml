@@ -1,6 +1,15 @@
 productTags:
   name: products
   description: Recursos para administrar Productos
+cartTags:
+  name: carts
+  description: Recursos para administrar los Carritos
+msjTags:
+  name: messagges
+  description: Recursos para administrar los mensajes del chat
+ordTags:
+  name: orders
+  description: Recursos para administrar las ordenes de compra
 landingTags:
   name: landing
   description: Detalles de como vas a desplazarte por la web

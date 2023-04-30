@@ -1,0 +1,47 @@
+# carts
+components:
+  schemas:
+    carts:
+      type: object
+      required:
+        - _id
+        - author
+        - productos
+        - timestamp
+      properties:
+        _id: 
+          type: string
+          description: ID generado por mongo
+        author: 
+          type: object
+          description: Objeto donde las propiedades indican la informacion del creador del carrito de compra
+        productos:
+          type: array
+          description: Array donde se guardaran los productos seleccionados
+        timestamp:
+          type: string
+          description: Momento en el cual se crea el carrito
+      example:
+        _id: 643df20356e60a82bf2d617d
+        author: {
+          name: Emiliano,
+          lastName: Caballero,
+          address: Calle 123,
+          phoneNumber: 3413971779,
+          username: Emiliano@gmail.com
+        }
+        productos: [
+          {
+            _id: ObjectId('643df20356e60a82bf2d617d'),
+            timestamp: "1681781251666",
+            name: Versace,
+            category: camisas,
+            description: Camisa elegante,
+            code: CC-AA,
+            price: 300,
+            photo: img.jpg,
+            stock: 100,
+            cant: 1
+          }
+        ]
+        timestamp: 1681781251666

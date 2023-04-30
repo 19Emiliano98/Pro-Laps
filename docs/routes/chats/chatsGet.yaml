@@ -1,0 +1,17 @@
+paths:
+  /chat:
+    get:
+      summary: Retorna todos los mensajes que enviaron los usuarios
+      tags:
+        - messagges
+      responses:
+        "200":
+          description: Todos los mensajes del chat ( global )
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/chats'
+        "404":
+          description: Product not found Error

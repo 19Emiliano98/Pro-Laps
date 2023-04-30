@@ -1,0 +1,17 @@
+paths:
+  /cart/{id}:
+    delete:
+      summary: Elimina el Carrito por ID
+      tags:
+        - carts
+      parameters:
+      - name: id
+        in: path
+        description: El parametro de la ruta obtiene el id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: Eliminado con exito
+        "404":
+          description: Product not found Error

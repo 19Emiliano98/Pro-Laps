@@ -1,0 +1,18 @@
+# NewProduct
+components:
+  requestBodies:
+    newChat:
+      type: object
+      required:
+        - name
+        - text
+      properties:
+        name:
+          type: string
+          description: Mail del emisor
+        text:
+          type: string
+          description: Mensaje que envia el emisor
+      example:
+        name: Emiliano@gmail.com
+        text: Hola como estan?

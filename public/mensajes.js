@@ -21,5 +21,4 @@ function addMessage() {
 		text: document.getElementById('text').value,
 	};
 	socket.emit('new-message', message);
-	// return false
 }

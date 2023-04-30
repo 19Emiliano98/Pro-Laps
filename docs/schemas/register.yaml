@@ -34,7 +34,7 @@ components:
           description: URL de la Imagen del producto
         username:
           type: string
-          description: Nombre de usuario que se visualiza en la pagina
+          description: E-mail del usuario
         password:
           type: string
           description: Pass de la cuenta ( encryptada )
@@ -48,6 +48,6 @@ components:
         age: 24
         phoneNumber: 3413456543
         photo: img.jpg
-        username: Emi98
+        username: Emiliano@gmail.com
         password: dkcvpeprottrldlfderer
         admin: true
