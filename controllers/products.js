@@ -110,7 +110,9 @@ const getCategory = ( req, res ) => {
 const getB = (req, res) => {
 	const name = req.body.nameb.charAt(0).toUpperCase() + req.body.nameb.slice(1);
 	const { url, method } = req;
+	
 	logger.info(`Ruta ${method} ${url}`);
+	
 	if (req.user === undefined) {
 		return products.get(name)
 			.then((productos) => {
