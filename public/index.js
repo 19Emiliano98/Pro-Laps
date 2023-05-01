@@ -1,7 +1,5 @@
-const baseUrl = 'http://localhost:8080';
-
 function EliminarProducto(pid) {
-	fetch(baseUrl + '/products/' + pid, { method: 'DELETE' });
+	fetch('/products/' + pid, { method: 'DELETE' });
 }
 
 function emptyCart(pid) {
@@ -18,7 +16,7 @@ function Actualizar(pid) {
 		stock: document.getElementById('stock').value,
 	};
 
-	fetch(baseUrl + '/products/' + pid, {
+	fetch('/products/' + pid, {
 		method: 'PUT',
 		body: JSON.stringify(data),
 		headers: {
@@ -38,7 +36,7 @@ function añadirCarrito(pid, code) {
 }
 
 function generateOrder(pid) {
-	fetch(`${baseUrl}/orders`, {
+	fetch(`/orders`, {
 		method: 'POST',
 		body: JSON.stringify({ id: pid }),
 		headers: {
