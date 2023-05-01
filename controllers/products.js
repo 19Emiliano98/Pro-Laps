@@ -10,7 +10,7 @@ const get = async (req, res) => {
 	if (req.user === undefined) {
 		return products.get()
 			.then((productos) => {
-				logger.info('Cargo la pagina de los productos')
+				logger.info('Cargo la pagina de los productos');
 				res.render('User/productosUser', { productos });
 			})
 			.catch((err) => {
@@ -25,6 +25,7 @@ const get = async (req, res) => {
 	if (req.user?.admin) {
 		return products.get()
 			.then((productos) => {
+				logger.info('Cargo la pagina de los productos')
 				res.render('Admin/productosAdmin', { productos, saludo, avatar });
 			})
 			.catch((err) => {
@@ -33,6 +34,7 @@ const get = async (req, res) => {
 	}
 	products.get()
 		.then((productos) => {
+			logger.info('Cargo la pagina de los productos')
 			res.render('UserLogin/productosUserLogin', { productos, saludo, avatar });
 		})
 		.catch((err) => {
