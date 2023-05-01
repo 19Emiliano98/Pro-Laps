@@ -3,13 +3,14 @@ import daoProducts from '../Database/DAO/products.js';
 
 const products = new daoProducts();
 
-const get = (req, res) => {
+const get = async (req, res) => {
 	const { url, method } = req;
 	logger.info(`Ruta ${method} ${url}`);
 	
 	if (req.user === undefined) {
 		return products.get()
 			.then((productos) => {
+				logger.info('Cargo la pagina de los productos')
 				res.render('User/productosUser', { productos });
 			})
 			.catch((err) => {
@@ -39,7 +40,7 @@ const get = (req, res) => {
 		});
 };
 
-const getProductId = ( req, res ) => {
+const getProductId = async ( req, res ) => {
 	const { url, method } = req;
 	const param = req.params;
 	logger.info(`Ruta ${method} ${url}`);
@@ -73,7 +74,7 @@ const getProductId = ( req, res ) => {
 		});
 }
 
-const getCategory = ( req, res ) => {
+const getCategory = async ( req, res ) => {
 	const { url, method } = req;
 	const param = req.params;
 	logger.info(`Ruta ${method} ${url}`);
@@ -170,7 +171,7 @@ const add = async (req, res) => {
 		});
 };
 
-const update = (req, res) => {
+const update = async (req, res) => {
 	const { url, method, body } = req;
 	const id = req.params.id;
 	logger.info(`Ruta ${method} ${url}`);
@@ -194,7 +195,7 @@ const update = (req, res) => {
 		});
 };
 
-const Delete = (req, res) => {
+const Delete = async (req, res) => {
 	const { url, method } = req;
 	const id = req.params.id;
 	
