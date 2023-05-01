@@ -5,7 +5,7 @@ function EliminarProducto(pid) {
 }
 
 function emptyCart(pid) {
-	fetch(baseUrl + '/cart/' + pid, { method: 'DELETE' });
+	fetch('/cart/' + pid, { method: 'DELETE' });
 }
 
 function Actualizar(pid) {
@@ -28,7 +28,7 @@ function Actualizar(pid) {
 }
 
 function añadirCarrito(pid, code) {
-	fetch(`${baseUrl}/products`, {
+	fetch(`/cart`, {
 		method: 'POST',
 		body: JSON.stringify({ id: pid, code: code }),
 		headers: {
