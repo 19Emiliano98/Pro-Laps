@@ -158,7 +158,7 @@ const add = async (req, res) => {
 		stock: body.stock,
 	};
 	
-	return products.add(newProduct)
+	return await products.add(newProduct)
 		.then(() => {
 			res.redirect('/products');
 		})
