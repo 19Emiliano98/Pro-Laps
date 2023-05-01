@@ -17,7 +17,7 @@ export default class productDB {
 	async add(data) {
 		try {
 			const dataAdd = new modelProduc(data);
-			const add = dataAdd.save(dataAdd);
+			const add = await dataAdd.save(dataAdd);
 			return add;
 		} catch (err) {
 			logger.error('Error al guardar el producto ' + err);

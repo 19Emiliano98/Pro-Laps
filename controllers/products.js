@@ -162,6 +162,7 @@ const add = async (req, res) => {
 	
 	return await products.add(newProduct)
 		.then(() => {
+			logger.info('producto agregado')
 			res.redirect('/products');
 		})
 		.catch((err) => {
