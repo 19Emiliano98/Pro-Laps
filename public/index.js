@@ -28,7 +28,7 @@ function Actualizar(pid) {
 }
 
 function añadirCarrito(pid, code) {
-	fetch(`${baseUrl}/cart`, {
+	fetch(`${baseUrl}/products`, {
 		method: 'POST',
 		body: JSON.stringify({ id: pid, code: code }),
 		headers: {
